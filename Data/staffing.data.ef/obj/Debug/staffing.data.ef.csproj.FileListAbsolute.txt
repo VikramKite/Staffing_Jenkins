@@ -1,0 +1,16 @@
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.data.ef.dll.config
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.data.ef.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.data.ef.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\EntityFramework.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\EntityFramework.SqlServer.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.data.models.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.interfaces.data.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.interfaces.data.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\staffing.data.models.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\EntityFramework.xml
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Debug\EntityFramework.SqlServer.xml
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Debug\staffing.data.ef.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Debug\staffing.data.ef.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Debug\staffing.data.ef.csproj.CopyComplete
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Debug\staffing.data.ef.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Debug\staffing.data.ef.pdb

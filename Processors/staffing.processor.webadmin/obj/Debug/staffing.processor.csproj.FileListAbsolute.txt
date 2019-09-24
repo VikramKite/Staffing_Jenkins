@@ -1,0 +1,13 @@
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.processor.webadmin.dll
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.processor.webadmin.pdb
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.data.models.dll
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.interfaces.processor.web.dll
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.interfaces.repository.dll
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.data.models.pdb
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.interfaces.processor.web.pdb
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\bin\Debug\staffing.interfaces.repository.pdb
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\obj\Debug\staffing.processor.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\obj\Debug\staffing.processor.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\obj\Debug\staffing.processor.csproj.CopyComplete
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\obj\Debug\staffing.processor.webadmin.dll
+D:\InternalSystem\staffing\Processors\staffing.processor.webadmin\obj\Debug\staffing.processor.webadmin.pdb

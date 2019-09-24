@@ -1,0 +1,199 @@
+﻿@using staffing.data.constants
+@model List<staffing.data.models.Staffing.StaffingListModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_StaffingLayout.cshtml";
+}
+<style>
+    table.dataTable td {
+        word-break: break-word;
+    }
+</style>
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-edit"></i> View All Jobs</h1>
+        <p></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body table-responsive">
+                <h3 style="color:red;font-weight:bold"> @TempData["error_message"]</h3>
+
+                @if (Model != null && Model.Count > 0)
+                {
+                    <table id="example" class="display table table-hover table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th >Job Title</th>
+                                <th >Epic Position</th>
+                                <th>Location</th>
+                                <th>Job Received Date</th>
+                                <th>Total Position</th>
+                                <th>Total Filled</th>
+                                <th>Status</th>
+                                <th>Job Description</th>
+                                <th>Client Name</th>
+                                <th>Client Manager Name</th>
+                                <th>Assigned Name</th>
+                                <th>Account Manager Name</th>
+                                <th>Follow up Action</th>
+                                <th>Position Type Name</th>
+                                <th>Rate Range W2</th>
+                                <th>Rate Range c2c 1099</th>
+                                <th>Duration in months</th>
+                                <th>T & E paid</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td style="white-space: nowrap;">@Html.ActionLink(@item.job_title_name, "UpdateStaffing", "Staffing", new { id = item.staffing_id }, new { @class = "fa fa-edit" })</td>
+                                    <td >@(item.epic_position == true ? "Y" : "N")</td>
+                                    <td>@item.job_location_name</td>
+                                    <td>
+                                        @if (item.date_job_received != null)
+                                        {
+                                            @($"{@item.date_job_received:MM/dd/yyyy}")
+                                        }
+                                    </td>
+                                    <td>@($"{@item.total_no_of_positions:0}")</td>
+                                    <td>@($"{@item.no_of_positions_filled:0}")</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.position_status_name) && item.position_status_name == "Open")
+                                        {
+                                            <span class="badge badge-danger">@item.position_status_name</span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(item.position_status_name) && item.position_status_name == "Interview Stage")
+                                        {
+                                            <span class="badge badge-pill badge-warning">@item.position_status_name</span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(item.position_status_name) && item.position_status_name == "Resumes Sent")
+                                        {
+                                            <span class="badge badge-pill badge-secondary">@item.position_status_name</span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(item.position_status_name) && item.position_status_name == "Filled")
+                                        {
+                                            <span class="badge badge-pill badge-primary">@item.position_status_name</span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(item.position_status_name) && item.position_status_name == "Offer Made")
+                                        {
+                                            <span class="badge badge-pill badge-info">@item.position_status_name</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-success">@item.position_status_name</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="bs-component">
+                                            <button class="badge badge-pill badge-dark" type="button" title="" data-container="body" data-toggle="popover" data-placement="top" data-content="@item.job_description" data-original-title="Job Description">View</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @item.client_name
+                                    </td>
+                                    <td>@item.client_manager_name </td>
+                                    <td>@item.assigned_to_whom_name </td>
+                                    <td>@item.account_manager_name </td>
+                                    <td>
+                                        <button class="badge badge-pill badge-dark" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="@item.follow_up_action">@item.follow_up_action.TextLimit()</button>
+                                    </td>
+                                    <td>@item.position_type_name </td>
+                                    <td>@item.rate_range_w2 </td>
+                                    <td>@item.rate_range_c2c_1099 </td>
+                                    <td>@item.duration </td>
+                                    <td>@item.t_e_paid </td>
+                                    <td><a href='#' class='btn btn-danger' onclick="DeleteData(@item.staffing_id);">Delete</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No record found</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="~/Template/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Template/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/Template/js/popper.min.js"></script>
+    <script type="text/javascript">
+        $('.bs-component [data-toggle="popover"]').popover();
+        $('.bs-component [data-toggle="popover"]').popover();
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+                //"scrollY": "450px",
+                buttons: [
+                    'pageLength',
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            //columns: ':visible'
+                            columns: 'th:not(:last-child)'
+                        }
+                    },
+                    //{
+                    //    extend: 'pdfHtml5',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 5]
+                    //    }
+                    //},
+                    'colvis'
+                ]
+            });
+        });
+        function DeleteData(ID) {
+            if (confirm("Are you sure you want to delete ...?")) {
+                DeleteJobPosting(ID);
+            }
+            else {
+                return false;
+            }
+        }
+        function DeleteJobPosting(ID) {
+            var url = '@Url.Content("~/")' + "Staffing/Delete";
+            $.post(url, { staffing_id: ID }, function (data) {
+                if (data) {
+                    window.location.href = '@Url.Action("Index","Staffing")';
+                }
+                else {
+                    alert("This Job Posting cannot be deleted!");
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,320 @@
+﻿@model staffing.endpoints.Models.StaffingAddUpdateViewModel
+@{
+    ViewBag.Title = "Add New Job";
+    Layout = "~/Views/Shared/_StaffingLayout.cshtml";
+}
+
+<div class="app-title">
+    <div>
+        @if (Model.staffing_id != 0)
+        {
+            <h1>Update Jobs</h1>
+        }
+        else
+        {
+            <h1>Add New Jobs</h1>
+        }
+
+    </div>
+</div>
+@using (Html.BeginForm("AddNewStaffing", "Staffing", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.staffing_id)
+    <div class="col-md-12">
+        <div class="tile">
+            @if (!string.IsNullOrEmpty(Model.error_message))
+            {
+                <h5 style="color:red;font-weight:bold"> @Model.error_message</h5>
+            }
+            <div class="tile-body">
+                <form class="row">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Job Title<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.job_title_name, new { @class = "form-control", @maxlength = "100", @placeholder = "Search or Enter" })
+                            @Html.ValidationMessageFor(m => m.job_title_name, "", new { @style = "color:red" })
+                            @Html.HiddenFor(m => m.job_title_id)
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Epic Position<span class="star">*</span></label>
+                            @Html.DropDownListFor(m=>m.epic_position, new List<SelectListItem>
+                            {
+                                new SelectListItem {Text = "Y", Value = "Y"},
+                                new SelectListItem {Text = "N", Value = "N"},
+
+                            }, "Select Epic position", new {@class = "form-control"})
+                            @Html.ValidationMessageFor(m => m.epic_position, "", new { @style = "color:red" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Total No of Positions</label>
+                            @Html.TextBoxFor(m => m.total_no_of_positions, new { @class = "form-control", @onkeypress = "return IsNumeric(event);", @autocomplete = "off", maxlength = "10" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">No.of Positions Filled</label>
+                            @Html.TextBoxFor(m => m.no_of_positions_filled, new { @class = "form-control", @onkeypress = "return IsNumeric(event);", @autocomplete = "off", maxlength = "10" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Location<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.job_location_name, new { @class = "form-control", @maxlength = "100", @placeholder = "Search or Enter" })
+                            @Html.HiddenFor(m => m.job_location_id)
+                            @Html.ValidationMessageFor(m => m.job_location_name, "", new { @style = "color:red" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Date Job Received<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.date_job_received, "{0:MM/dd/yyyy}", new { @class = "form-control", @autocomplete = "off", placeholder = "Select Date", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.date_job_received, "", new { @style = "color:red" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Client<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.client_name, new { @class = "form-control", @maxlength = "100", @placeholder = "Search or Enter" })
+                            @Html.ValidationMessageFor(m => m.client_name, "", new { @style = "color:red" })
+                            @Html.HiddenFor(m => m.client_id)
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Client Manager</label>
+                            @Html.TextBoxFor(m => m.client_manager_name, new { @class = "form-control", @maxlength = 100, @autocomplete = "off", @placeholder = "Enter Client Manager Name" })
+                            @Html.HiddenFor(m => m.client_manager_id)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Job Description<span class="star">*</span></label>
+                            @Html.TextAreaFor(m => m.job_description, new { @class = "form-control", rows = "4", @maxlength = 1000, @autocomplete = "off", @onkeypress = "AcceptAlphaNumericOnly(event);", @placeholder = "Enter Job Description" })
+                            @Html.ValidationMessageFor(m => m.job_description, "", new { @style = "color:red" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Assigned To Whom</label>
+                            @Html.TextBoxFor(m => m.assigned_to_whom_name, new { @class = "form-control", @maxlength = "100", @placeholder = "Search or Enter" })
+                            @Html.HiddenFor(m => m.assigned_to_whom_id)
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Account Manager<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.account_manager_name, new { @class = "form-control", @maxlength = "100", @placeholder = "Search or Enter" })
+                            @Html.ValidationMessageFor(m => m.account_manager_name, "", new { @style = "color:red" })
+                            @Html.HiddenFor(m => m.account_manager_id)
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Status<span class="star">*</span></label>
+                            @Html.DropDownListFor(m => m.position_status_id, new SelectList(Model.positionstatus_list, "position_status_id ", "position_status_name", Model.position_status_id), "Select Status", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.position_status_id, "", new { @style = "color:red" })
+                            @Html.HiddenFor(m => m.position_status_id)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Follow-up Action</label>
+                            @Html.TextBoxFor(m => m.follow_up_action, new { @class = "form-control", @maxlength = 100, @autocomplete = "off", @onkeypress = "AcceptAlphaNumericOnly(event);" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Position Type<span class="star">*</span></label>
+                            @Html.DropDownListFor(m => m.position_type_id, new SelectList(Model.positiontype_list, "position_type_id ", "position_type_name", Model.position_type_id), "Select Position Type", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.position_type_id, "", new { @style = "color:red" })
+                            @Html.HiddenFor(m => m.position_type_id)
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Rate Range W2</label>
+                            @Html.TextBoxFor(m => m.rate_range_w2, new { @class = "form-control", @maxlength = 100, @autocomplete = "off", @onkeypress = "AcceptAlphaNumericOnly(event);" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Rate Range C2C/1099</label>
+                            @Html.TextBoxFor(m => m.rate_range_c2c_1099, new { @class = "form-control", @maxlength = 100, @autocomplete = "off", @onkeypress = "AcceptAlphaNumericOnly(event);" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Duration in Months</label>
+                            @Html.TextBoxFor(m => m.duration, new { @class = "form-control", @maxlength = 100, @autocomplete = "off", @onkeypress = "AcceptAlphaNumericOnly(event);" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">T & E Paid<span class="star">*</span></label>
+                            @Html.DropDownListFor(m=>m.t_e_paid, new List<SelectListItem>
+                            {
+                                new SelectListItem {Text = "Yes", Value = "Yes"},
+                                new SelectListItem {Text = "No", Value = "No"},
+                            }, "Select T & E Paid", new {@class = "form-control"})
+                            @Html.ValidationMessage("t_e_paid", "", new { @style = "color:red" })
+                        </div>
+                        <div class="form-group col-md-3" id="div_job_closed_date" style="display: @((Model.position_status_id == 4 || Model.position_status_id == 5) ? ";" : "none" )">
+                            <label class="control-label">Job Closed Date<span class="star">*</span></label>
+                            @Html.TextBoxFor(m => m.job_closed_date, "{0:MM/dd/yyyy}", new { @class = "form-control", @autocomplete = "off", @readonly = "readonly" })
+                            @Html.ValidationMessage("job_closed_date", "", new { @style = "color:red" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 align-self-end">
+                            <button class="btn btn-primary" onclick="DisableButton(this);" style="display: @((Convert.ToString(Session["RoleID"]) == "1") ? ";" : "none" )" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>@(Model.staffing_id != 0 ? "Update" : "Save")</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+@section js{
+    @* below code for Datepicker *@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(function () {
+            $("#date_job_received").datepicker({
+                numberOfMonths: 1,
+                onSelect: function (selected) {
+                    var dt = new Date(selected);
+                    dt.setDate(dt.getDate() + 1);
+                    $("#contract_end_date").datepicker("option", "minDate", dt);
+                }
+            });
+
+            $("#contract_end_date").datepicker({
+                numberOfMonths: 1,
+                onSelect: function (selected) {
+                    var dt = new Date(selected);
+                    dt.setDate(dt.getDate() - 1);
+                    $("#date_job_received").datepicker("option", "maxDate", dt);
+                }
+            });
+            $("#job_closed_date").datepicker({
+                numberOfMonths: 1
+            });
+        });
+    </script>
+    @* below code for Smart search *@
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#job_title_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'job_title_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+            $("#job_location_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'job_location_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+            $("#client_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'client_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+            $("#assigned_to_whom_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'assigned_to_whom_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+            $("#account_manager_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'account_manager_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+            $("#client_manager_name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Staffing/GetDropdownList/",
+                        type: "POST",
+                        dataType: "json",
+                        data: "{ 'search_text': '" + request.term + "','search_in_master': 'client_manager_name'}",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item.dropdown_name, value: item.dropdown_name };
+                                }))
+                        }
+                    })
+                },
+            });
+
+        });
+
+        $('#position_status_id').on('change',
+            function () {
+                var selectedPositionstatus = $(this).children("option:selected").val();
+                if (selectedPositionstatus !== null && selectedPositionstatus !== '') {
+                    if (selectedPositionstatus == 4 || selectedPositionstatus == 5) {
+                        $("#div_job_closed_date").show();
+                    } else {
+                        $("#div_job_closed_date").hide();
+                    }
+                } else {
+                    $("#div_job_closed_date").hide();
+                }
+            });
+
+
+
+    </script>
+}
+

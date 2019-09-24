@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <li class="dropdown">
+                @if (!string.IsNullOrEmpty(Session["UserName"].ToString()))
+                {
+                    <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
+                       Hi @Session["UserName"]
+                        <i class="fa fa-user fa-lg"></i>
+                    </a>
+                    <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="@Url.Action("ChangePwd", "Manage")"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
+                       Hi @User.Identity.GetUserName()
+                        <i class="fa fa-user fa-lg"></i>
+                    </a>
+                    <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="@Url.Action("ChangePwd", "Manage")"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                    </ul>
+                }
+            </li>
+        </ul>
+    }
+}
+
+

@@ -1,0 +1,6 @@
+D:\InternalSystem\staffing\Data\staffing.data.constants\bin\Debug\staffing.data.constants.dll
+D:\InternalSystem\staffing\Data\staffing.data.constants\bin\Debug\staffing.data.constants.pdb
+D:\InternalSystem\staffing\Data\staffing.data.constants\obj\Debug\staffing.data.constants.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Data\staffing.data.constants\obj\Debug\staffing.data.constants.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Data\staffing.data.constants\obj\Debug\staffing.data.constants.dll
+D:\InternalSystem\staffing\Data\staffing.data.constants\obj\Debug\staffing.data.constants.pdb

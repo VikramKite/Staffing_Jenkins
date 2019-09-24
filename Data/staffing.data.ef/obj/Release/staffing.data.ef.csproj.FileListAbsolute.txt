@@ -1,0 +1,16 @@
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.data.ef.dll.config
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.data.ef.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.data.ef.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\EntityFramework.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\EntityFramework.SqlServer.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.data.models.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.interfaces.data.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.interfaces.data.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\staffing.data.models.pdb
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\EntityFramework.xml
+D:\InternalSystem\staffing\Data\staffing.data.ef\bin\Release\EntityFramework.SqlServer.xml
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Release\staffing.data.ef.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Release\staffing.data.ef.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Release\staffing.data.ef.csproj.CopyComplete
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Release\staffing.data.ef.dll
+D:\InternalSystem\staffing\Data\staffing.data.ef\obj\Release\staffing.data.ef.pdb

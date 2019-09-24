@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InternalSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InternalSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="account_manager" EntityType="InternalSystemModel.account_manager" />
+    <EntitySet Name="assigned_to_whom" EntityType="InternalSystemModel.assigned_to_whom" />
+    <EntitySet Name="clients" EntityType="InternalSystemModel.client" />
+    <EntitySet Name="job_location" EntityType="InternalSystemModel.job_location" />
+    <EntitySet Name="job_title" EntityType="InternalSystemModel.job_title" />
+    <EntitySet Name="position_status" EntityType="InternalSystemModel.position_status" />
+    <EntitySet Name="position_type" EntityType="InternalSystemModel.position_type" />
+    <FunctionImport Name="SP_GetPositionStatus" ReturnType="Collection(InternalSystemModel.SP_GetPositionStatus_Result)" />
+    <EntitySet Name="loggings" EntityType="InternalSystemModel.logging" />
+    <FunctionImport Name="SP_GetClientWiseReport" />
+    <EntitySet Name="client_manager" EntityType="InternalSystemModel.client_manager" />
+    <EntitySet Name="staffings" EntityType="InternalSystemModel.staffing" />
+  </EntityContainer>
+  <EntityType Name="account_manager">
+    <Key>
+      <PropertyRef Name="account_manager_id" />
+    </Key>
+    <Property Name="account_manager_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_manager_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="assigned_to_whom">
+    <Key>
+      <PropertyRef Name="assigned_to_whom_id" />
+    </Key>
+    <Property Name="assigned_to_whom_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="assigned_to_whom_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="client_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="job_location">
+    <Key>
+      <PropertyRef Name="job_location_id" />
+    </Key>
+    <Property Name="job_location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_location_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="job_title">
+    <Key>
+      <PropertyRef Name="job_title_id" />
+    </Key>
+    <Property Name="job_title_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_title_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="position_status">
+    <Key>
+      <PropertyRef Name="position_status_id" />
+    </Key>
+    <Property Name="position_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="position_status_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="position_type">
+    <Key>
+      <PropertyRef Name="position_type_id" />
+    </Key>
+    <Property Name="position_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="position_type_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="SP_GetPositionStatus_Result">
+    <Property Type="String" Name="position_status_name" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="position_count" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="logging">
+    <Key>
+      <PropertyRef Name="exception_id" />
+    </Key>
+    <Property Name="exception_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exception_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="controller_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="action_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="exception_stack_trace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="log_time" Type="DateTime" Precision="3" />
+    <Property Name="user_ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client_manager">
+    <Key>
+      <PropertyRef Name="client_manager_id" />
+    </Key>
+    <Property Name="client_manager_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="client_manager_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="staffing">
+    <Key>
+      <PropertyRef Name="staffing_id" />
+    </Key>
+    <Property Name="staffing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_title_id" Type="Int32" Nullable="false" />
+    <Property Name="epic_position" Type="Boolean" Nullable="false" />
+    <Property Name="total_no_of_positions" Type="Int32" Nullable="false" />
+    <Property Name="no_of_positions_filled" Type="Int32" Nullable="false" />
+    <Property Name="job_location_id" Type="Int32" />
+    <Property Name="date_job_received" Type="DateTime" Precision="3" />
+    <Property Name="client_id" Type="Int32" />
+    <Property Name="job_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="assigned_to_whom_id" Type="Int32" />
+    <Property Name="account_manager_id" Type="Int32" />
+    <Property Name="position_status_id" Type="Int32" />
+    <Property Name="follow_up_action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="position_type_id" Type="Int32" />
+    <Property Name="rate_range_w2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="rate_range_c2c_1099" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="duration" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="t_e_paid" Type="Boolean" Nullable="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="created_by_user_id" Type="Int32" />
+    <Property Name="created_datetime" Type="DateTime" Precision="3" />
+    <Property Name="last_updated_by_user_id" Type="Int32" />
+    <Property Name="last_updated_datetime" Type="DateTime" Precision="3" />
+    <Property Name="job_closed_date" Type="DateTime" Precision="3" />
+    <Property Name="client_manager_id" Type="Int32" />
+  </EntityType>
+</Schema>

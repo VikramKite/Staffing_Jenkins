@@ -1,0 +1,172 @@
+﻿@model staffing.endpoints.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_StaffingLayout.cshtml";
+}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+        <p></p>
+    </div>
+</div>
+@*<div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small primary coloured-icon">
+                <i class="icon fa fa-users fa-3x"></i>
+                <div class="info">
+                    <h4>Total Jobs</h4>
+                    <p><b> <a onclick="#" style="cursor: pointer; ">@Model.total_no_of_jobs</a></b></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small warning coloured-icon">
+                <i class="icon fa fa-files-o fa-3x"></i>
+                <div class="info">
+                    <h4>Total Clients</h4>
+                    <p><b><a onclick="#" style="cursor: pointer; ">@Model.no_of_clients</a></b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small info coloured-icon">
+                <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+                <div class="info">
+                    <h4>Total Positions</h4>
+                    <p><b><a onclick="#" style="cursor: pointer; ">@Model.total_no_of_positions</a></b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small danger coloured-icon">
+                <i class="icon fa fa-star fa-3x"></i>
+                <div class="info">
+                    <h4>Total Filled Positions</h4>
+                    <p><b><a onclick="#" style="cursor: pointer; ">@Model.no_of_positions_filled</a></b></p>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="tile p-0">
+            <h4 class="tile-title folder-head">Job Position Dashboard</h4>
+            <div class="tile-body">
+                <ul class="nav nav-pills flex-column mail-nav">
+                    <li class="nav-item active"><a class="nav-link" href="#"> Total No of Job Posted<span class="badge badge-pill badge-primary float-right">@Model.total_no_of_positions</span></a></li>
+                    @* <li class="nav-item active"><a class="nav-link" href="#"> No Of Positions Filled<span class="badge badge-pill badge-primary float-right">@Model.no_of_positions_filled</span></a></li>*@
+                    @if (Model != null && Model.position_statuswisecount.Count != 0)
+                    {
+                        foreach (var item in Model.position_statuswisecount)
+                        {
+                            <li class="nav-item active"><a class="nav-link" href="#"> @item.position_status_name<span class="badge badge-pill badge-primary float-right">@item.position_count</span></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="tile p-0">
+            @{
+                var number = 0;
+            }
+            <h4 class="tile-title folder-head">Client Wise Job Position Status</h4>
+            <div class="tile-body">
+                @if (Model.clientwisestatus_list != null && Model.clientwisestatus_list.Count != 0)
+                {
+                    <table class="table table-bordered table-sm" id="sampleTable">
+                        <thead>
+                            <tr>
+                                @foreach (var row in Model.clientwisestatus_list.FirstOrDefault())
+                                {
+                                    <th style="background-color:#0912f3; color:white;">@row.Key</th>
+                                }
+                            </tr>
+                        </thead>
+                        @foreach (var row in Model.clientwisestatus_list)
+                        {
+                            if (row.ContainsValue("Grand Total"))
+                            {
+                                <tr style="background-color:#0912f3; color:white;">
+                                    @foreach (var column in row)
+                                    {
+                                        <td>
+                                            @if (column.Value != null)
+                                            {
+                                                if (!string.IsNullOrEmpty(@column.Value.ToString()))
+                                                {
+                                                    @column.Value
+                                                    ;
+                                                }
+                                                else
+                                                {
+                                                    @number
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    @foreach (var column in row)
+                                    {
+                                        if (column.Key == "Grand Total")
+                                        {
+                                            <td style="background-color:#0912f3; color:white;">
+                                                @if (column.Value != null)
+                                                {
+                                                    if (!string.IsNullOrEmpty(@column.Value.ToString()))
+                                                    {
+                                                        @column.Value
+                                                        ;
+                                                    }
+                                                    else
+                                                    {
+                                                        @number
+                                                    }
+                                                }
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @if (column.Value != null)
+                                                {
+                                                    if (!string.IsNullOrEmpty(@column.Value.ToString()))
+                                                    {
+                                                        @column.Value
+                                                        ;
+                                                    }
+                                                    else
+                                                    {
+                                                        @number
+                                                    }
+                                                }
+                                            </td>
+                                        }
+                                    }
+                                </tr>
+                            }
+
+                        }
+                    </table>
+                }
+                else
+                {
+                    <p>No Record Found</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+
+

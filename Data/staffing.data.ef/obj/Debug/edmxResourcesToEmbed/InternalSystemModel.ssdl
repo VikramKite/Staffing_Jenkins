@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InternalSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account_manager">
+    <Key>
+      <PropertyRef Name="account_manager_id" />
+    </Key>
+    <Property Name="account_manager_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account_manager_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="assigned_to_whom">
+    <Key>
+      <PropertyRef Name="assigned_to_whom_id" />
+    </Key>
+    <Property Name="assigned_to_whom_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="assigned_to_whom_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="client_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client_manager">
+    <Key>
+      <PropertyRef Name="client_manager_id" />
+    </Key>
+    <Property Name="client_manager_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="client_manager_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="job_location">
+    <Key>
+      <PropertyRef Name="job_location_id" />
+    </Key>
+    <Property Name="job_location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_location_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="job_title">
+    <Key>
+      <PropertyRef Name="job_title_id" />
+    </Key>
+    <Property Name="job_title_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_title_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="logging">
+    <Key>
+      <PropertyRef Name="exception_id" />
+    </Key>
+    <Property Name="exception_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="exception_message" Type="varchar(max)" />
+    <Property Name="controller_name" Type="varchar" MaxLength="100" />
+    <Property Name="action_name" Type="varchar" MaxLength="100" />
+    <Property Name="exception_stack_trace" Type="varchar(max)" />
+    <Property Name="log_time" Type="datetime" />
+    <Property Name="user_ip" Type="varchar(max)" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="position_status">
+    <Key>
+      <PropertyRef Name="position_status_id" />
+    </Key>
+    <Property Name="position_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="position_status_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="position_type">
+    <Key>
+      <PropertyRef Name="position_type_id" />
+    </Key>
+    <Property Name="position_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="position_type_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="staffing">
+    <Key>
+      <PropertyRef Name="staffing_id" />
+    </Key>
+    <Property Name="staffing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_title_id" Type="int" Nullable="false" />
+    <Property Name="epic_position" Type="bit" Nullable="false" />
+    <Property Name="total_no_of_positions" Type="int" Nullable="false" />
+    <Property Name="no_of_positions_filled" Type="int" Nullable="false" />
+    <Property Name="job_location_id" Type="int" />
+    <Property Name="date_job_received" Type="datetime" />
+    <Property Name="client_id" Type="int" />
+    <Property Name="job_description" Type="varchar" MaxLength="1000" />
+    <Property Name="assigned_to_whom_id" Type="int" />
+    <Property Name="account_manager_id" Type="int" />
+    <Property Name="position_status_id" Type="int" />
+    <Property Name="follow_up_action" Type="varchar" MaxLength="100" />
+    <Property Name="position_type_id" Type="int" />
+    <Property Name="rate_range_w2" Type="varchar" MaxLength="100" />
+    <Property Name="rate_range_c2c_1099" Type="varchar" MaxLength="100" />
+    <Property Name="duration" Type="varchar" MaxLength="100" />
+    <Property Name="t_e_paid" Type="bit" Nullable="false" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_by_user_id" Type="int" />
+    <Property Name="created_datetime" Type="datetime" />
+    <Property Name="last_updated_by_user_id" Type="int" />
+    <Property Name="last_updated_datetime" Type="datetime" />
+    <Property Name="job_closed_date" Type="datetime" />
+    <Property Name="client_manager_id" Type="int" />
+  </EntityType>
+  <Function Name="SP_GetClientWiseReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetPositionStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="InternalSystemModelStoreContainer">
+    <EntitySet Name="account_manager" EntityType="Self.account_manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="assigned_to_whom" EntityType="Self.assigned_to_whom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client_manager" EntityType="Self.client_manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job_location" EntityType="Self.job_location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job_title" EntityType="Self.job_title" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="logging" EntityType="Self.logging" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="position_status" EntityType="Self.position_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="position_type" EntityType="Self.position_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="staffing" EntityType="Self.staffing" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

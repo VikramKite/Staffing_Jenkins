@@ -1,0 +1,13 @@
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.data.repository.dll
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.data.repository.pdb
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.data.models.dll
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.interfaces.data.dll
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.interfaces.repository.dll
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.interfaces.data.pdb
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.interfaces.repository.pdb
+D:\InternalSystem\staffing\Data\staffing.data.repository\bin\Debug\staffing.data.models.pdb
+D:\InternalSystem\staffing\Data\staffing.data.repository\obj\Debug\staffing.data.repository.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Data\staffing.data.repository\obj\Debug\staffing.data.repository.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Data\staffing.data.repository\obj\Debug\staffing.data.repository.csproj.CopyComplete
+D:\InternalSystem\staffing\Data\staffing.data.repository\obj\Debug\staffing.data.repository.dll
+D:\InternalSystem\staffing\Data\staffing.data.repository\obj\Debug\staffing.data.repository.pdb

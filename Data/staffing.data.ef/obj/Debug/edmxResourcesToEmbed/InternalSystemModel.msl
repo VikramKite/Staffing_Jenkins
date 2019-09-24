@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InternalSystemModelStoreContainer" CdmEntityContainer="InternalSystemEntities">
+    <EntitySetMapping Name="account_manager">
+      <EntityTypeMapping TypeName="InternalSystemModel.account_manager">
+        <MappingFragment StoreEntitySet="account_manager">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="account_manager_name" ColumnName="account_manager_name" />
+          <ScalarProperty Name="account_manager_id" ColumnName="account_manager_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="assigned_to_whom">
+      <EntityTypeMapping TypeName="InternalSystemModel.assigned_to_whom">
+        <MappingFragment StoreEntitySet="assigned_to_whom">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="assigned_to_whom_name" ColumnName="assigned_to_whom_name" />
+          <ScalarProperty Name="assigned_to_whom_id" ColumnName="assigned_to_whom_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="InternalSystemModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="client_name" ColumnName="client_name" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="job_location">
+      <EntityTypeMapping TypeName="InternalSystemModel.job_location">
+        <MappingFragment StoreEntitySet="job_location">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="job_location_name" ColumnName="job_location_name" />
+          <ScalarProperty Name="job_location_id" ColumnName="job_location_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="job_title">
+      <EntityTypeMapping TypeName="InternalSystemModel.job_title">
+        <MappingFragment StoreEntitySet="job_title">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="job_title_name" ColumnName="job_title_name" />
+          <ScalarProperty Name="job_title_id" ColumnName="job_title_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="position_status">
+      <EntityTypeMapping TypeName="InternalSystemModel.position_status">
+        <MappingFragment StoreEntitySet="position_status">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="position_status_name" ColumnName="position_status_name" />
+          <ScalarProperty Name="position_status_id" ColumnName="position_status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="position_type">
+      <EntityTypeMapping TypeName="InternalSystemModel.position_type">
+        <MappingFragment StoreEntitySet="position_type">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="position_type_name" ColumnName="position_type_name" />
+          <ScalarProperty Name="position_type_id" ColumnName="position_type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetPositionStatus" FunctionName="InternalSystemModel.Store.SP_GetPositionStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InternalSystemModel.SP_GetPositionStatus_Result">
+          <ScalarProperty Name="position_status_name" ColumnName="position_status_name" />
+          <ScalarProperty Name="position_count" ColumnName="position_count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="loggings">
+      <EntityTypeMapping TypeName="InternalSystemModel.logging">
+        <MappingFragment StoreEntitySet="logging">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_ip" ColumnName="user_ip" />
+          <ScalarProperty Name="log_time" ColumnName="log_time" />
+          <ScalarProperty Name="exception_stack_trace" ColumnName="exception_stack_trace" />
+          <ScalarProperty Name="action_name" ColumnName="action_name" />
+          <ScalarProperty Name="controller_name" ColumnName="controller_name" />
+          <ScalarProperty Name="exception_message" ColumnName="exception_message" />
+          <ScalarProperty Name="exception_id" ColumnName="exception_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetClientWiseReport" FunctionName="InternalSystemModel.Store.SP_GetClientWiseReport" />
+    <EntitySetMapping Name="client_manager">
+      <EntityTypeMapping TypeName="InternalSystemModel.client_manager">
+        <MappingFragment StoreEntitySet="client_manager">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="client_manager_name" ColumnName="client_manager_name" />
+          <ScalarProperty Name="client_manager_id" ColumnName="client_manager_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staffings">
+      <EntityTypeMapping TypeName="InternalSystemModel.staffing">
+        <MappingFragment StoreEntitySet="staffing">
+          <ScalarProperty Name="client_manager_id" ColumnName="client_manager_id" />
+          <ScalarProperty Name="job_closed_date" ColumnName="job_closed_date" />
+          <ScalarProperty Name="last_updated_datetime" ColumnName="last_updated_datetime" />
+          <ScalarProperty Name="last_updated_by_user_id" ColumnName="last_updated_by_user_id" />
+          <ScalarProperty Name="created_datetime" ColumnName="created_datetime" />
+          <ScalarProperty Name="created_by_user_id" ColumnName="created_by_user_id" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="t_e_paid" ColumnName="t_e_paid" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="rate_range_c2c_1099" ColumnName="rate_range_c2c_1099" />
+          <ScalarProperty Name="rate_range_w2" ColumnName="rate_range_w2" />
+          <ScalarProperty Name="position_type_id" ColumnName="position_type_id" />
+          <ScalarProperty Name="follow_up_action" ColumnName="follow_up_action" />
+          <ScalarProperty Name="position_status_id" ColumnName="position_status_id" />
+          <ScalarProperty Name="account_manager_id" ColumnName="account_manager_id" />
+          <ScalarProperty Name="assigned_to_whom_id" ColumnName="assigned_to_whom_id" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="date_job_received" ColumnName="date_job_received" />
+          <ScalarProperty Name="job_location_id" ColumnName="job_location_id" />
+          <ScalarProperty Name="no_of_positions_filled" ColumnName="no_of_positions_filled" />
+          <ScalarProperty Name="total_no_of_positions" ColumnName="total_no_of_positions" />
+          <ScalarProperty Name="epic_position" ColumnName="epic_position" />
+          <ScalarProperty Name="job_title_id" ColumnName="job_title_id" />
+          <ScalarProperty Name="staffing_id" ColumnName="staffing_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

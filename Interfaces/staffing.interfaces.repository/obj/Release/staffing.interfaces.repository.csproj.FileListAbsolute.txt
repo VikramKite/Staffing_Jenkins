@@ -1,0 +1,9 @@
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\bin\Release\staffing.interfaces.repository.dll
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\bin\Release\staffing.interfaces.repository.pdb
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\bin\Release\staffing.data.models.dll
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\bin\Release\staffing.data.models.pdb
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\obj\Release\staffing.interfaces.repository.csprojAssemblyReference.cache
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\obj\Release\staffing.interfaces.repository.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\obj\Release\staffing.interfaces.repository.csproj.CopyComplete
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\obj\Release\staffing.interfaces.repository.dll
+D:\InternalSystem\staffing\Interfaces\staffing.interfaces.repository\obj\Release\staffing.interfaces.repository.pdb

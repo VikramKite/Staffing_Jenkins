@@ -1,0 +1,6 @@
+D:\InternalSystem\staffing\Data\staffing.data.models\bin\Debug\staffing.data.models.dll
+D:\InternalSystem\staffing\Data\staffing.data.models\bin\Debug\staffing.data.models.pdb
+D:\InternalSystem\staffing\Data\staffing.data.models\obj\Debug\staffing.data.models.csproj.CoreCompileInputs.cache
+D:\InternalSystem\staffing\Data\staffing.data.models\obj\Debug\staffing.data.models.dll
+D:\InternalSystem\staffing\Data\staffing.data.models\obj\Debug\staffing.data.models.pdb
+D:\InternalSystem\staffing\Data\staffing.data.models\obj\Debug\staffing.data.models.csprojAssemblyReference.cache

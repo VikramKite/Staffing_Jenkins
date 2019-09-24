@@ -1,0 +1,12 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "ErrorView";
+    Layout = "~/Views/Shared/_StaffingLayout.cshtml";
+}
+
+<div class="page-error tile">
+    <h1><i class="fa fa-exclamation-circle"></i> <strong>Oops!</strong> @TempData["ErrorMessage"]</h1>
+    <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have previously come from</p>
+    <p><b>Or you could just press this neat little button:</b></p>
+    <p><a class="btn btn-primary" href="javascript:history.back()">Take Me Back</a></p>
+</div>
